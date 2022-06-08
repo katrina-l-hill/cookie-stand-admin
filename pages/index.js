@@ -15,7 +15,6 @@ export default function Home() {
       </Head>
       <Header />
       <main className='flex flex-col items-center py-4 space-y-8'>
-        <CookieStandForm onSubmit={formHandler} />
         <Main data={state} />
       </main>
       <Footer copyright="2022" />
@@ -37,7 +36,7 @@ export default function Home() {
 
 function Header() {
   return (
-    <header className='px-8 py-6 text-4xl text-black bg-emerald-500'>
+    <header className='px-6 py-4 text-4xl text-black bg-emerald-500'>
       <h1>Cookie Stand Admin</h1>
     </header>
   )
@@ -46,9 +45,9 @@ function Header() {
 function Main(props) {
   return (
     <main className="flex flex-col items-center py-4 pt-6 space-y-8">
-      <CookieForm onSubmit={props.formHandler} />
+      <CookieStandForm onSubmit={props.formHandler} />
       <p className="text-gray-500 text-md">Report Table Coming Soon...</p>
-      <ReportTable
+      <TableJSON
         standData={props.standData} />
     </main>
   )
@@ -61,40 +60,40 @@ function CookieStandForm(props) {
       <div className="flex flex-wrap">
         <div className="w-full px-3 mb-5">
           <label className="text-sm font-bold tracking-wide text-gray-700">Location</label>
-          <input className="w-full px-4 py-3 text-gray-700 placeholder-black rounded bg-gray-50 h-1/2" id="Location" type="string" placehoder="Barcelona" required='true />
+          <input className="w-full px-4 py-3 text-gray-700 placeholder-black rounded bg-gray-50 h-1/2" id="Location" type="string" placeholder="Barcelona" required={true} />
         </div>
       </div>
-      
+
       <div className="flex flex-wrap w-full mb-3">
         <div className="w-full px-3 mb-6 md:w-1/4 md:mb-0">
           <label className="text-sm font-bold tracking-wide text-gray-700">Minimum Customers Per Hour</label>
-          <input className="w-full px-4 py-3 text-gray-700 placeholder-black rounded bg-gray-50 h-1/2" id="MinimumCustomersPerHour" type="text" placehoder="4" required='true />
+          <input className="w-full px-4 py-3 text-gray-700 placeholder-black rounded bg-gray-50 h-1/2" id="MinimumCustomersPerHour" type="text" placeholder="2" required={true} />
         </div>
 
         <div className="flex flex-wrap w-full mb-3">
           <div className="w-full px-3 mb-6 md:w-1/4 md:mb-0">
             <label className="text-sm font-bold tracking-wide text-gray-700">Maximum Customers Per Hour</label>
-            <input className="w-full px-4 py-3 text-gray-700 placeholder-black rounded bg-gray-50 h-1/2" id="MaximumCustomersPerHour" type="text" placehoder="4" required='true/>
-        </div>
-
-        <div className="flex flex-wrap w-full mb-3">
-          <div className="w-full px-3 mb-6 md:w-1/4 md:mb-0">
-            <label className="text-sm font-bold tracking-wide text-gray-700">Average Cookies PerHour</label>
-            <input className="w-full px-4 py-3 text-gray-700 placeholder-black rounded bg-gray-50 h-1/2" id="AverageCookiesPerHour" type="float" placehoder="2.5" required='true />
+            <input className="w-full px-4 py-3 text-gray-700 placeholder-black rounded bg-gray-50 h-1/2" id="MaximumCustomersPerHour" type="text" placeholder="4" required={true} />
           </div>
 
-          <div className="flex flex-wrap w-full mb-3"></div>
-          <button type="submit" className="block w-full h-full font-bold text-gray-700 rounded-md bg-emerald-500 ">
-            Create
-          </button>
+          <div className="flex flex-wrap w-full mb-3">
+            <div className="w-full px-3 mb-6 md:w-1/4 md:mb-0">
+              <label className="text-sm font-bold tracking-wide text-gray-700">Average Cookies Per Hour</label>
+              <input className="w-full px-4 py-3 text-gray-700 rounded 0placeholder-black bg-gray-50 h-1/2" id="AverageCookiesPerHour" type="float" placeholder="2.5" required={true} />
+            </div>
+
+            <div className="flex flex-wrap w-full mb-3"></div>
+            <button type="submit" className="block w-full h-full font-bold text-gray-700 rounded-md bg-emerald-500">
+              Create
+            </button>
+          </div>
         </div>
       </div>
     </form>
   )
 }
 
-function ShowJSON({ standData }) {
-  console.log(JSON.stringify(standData));
+function TableJSON({ standData }) {
   return (
     <div>
       {JSON.stringify(standData) == '{"standData":[]}' ? "Enter A New Stand" : <p>{JSON.stringify(standData)}</p>}
@@ -102,9 +101,9 @@ function ShowJSON({ standData }) {
   )
 }
 
-function Footer({ props }) {
+function Footer(props) {
   return (
-    <footer className="px-8 py-4 font-medium text-gray-900 bg-emerald-500">
+    <footer className="px-8 py-2 font-medium text-gray-700 bg-emerald-500">
       <p>&copy;{props.copyright}</p>
     </footer>
   )
