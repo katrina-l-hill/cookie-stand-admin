@@ -1,6 +1,10 @@
 import Head from 'next/head'
 // import { useState } from 'react'
-import { Header } from '../compoenents/Header';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import ReportTable from '../components/ReportTable';
+import CreateForm from '../components/CreateForm';
+
 export default function Home() {
   // Home is a functional component
   // name the functional component the same as you would a class
@@ -11,7 +15,12 @@ export default function Home() {
         <title>Cookie Stand Admin</title>
       </Head>
       <div>
-        I'm sad and lonely
+        <Header />
+        <main>
+          <ReportTable />
+          <CreateForm />
+        </main>
+        <Footer />
       </div>
     </>
   )
