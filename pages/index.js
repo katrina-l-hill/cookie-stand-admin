@@ -17,8 +17,8 @@ export default function Home() {
       <div>
         <Header />
         <main>
-          <ReportTable />
           <CreateForm />
+          <ReportTable />
         </main>
         <Footer />
       </div>
