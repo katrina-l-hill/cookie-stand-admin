@@ -1,0 +1,4 @@
+table_data is an array of items with three properties
+    item.city = the name of the city entered
+    item.values = dictionary with hour for the key and associated values
+    item.total = sum of values in in item.values array
