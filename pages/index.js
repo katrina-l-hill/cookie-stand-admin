@@ -15,7 +15,7 @@ export default function Home() {
       </Head>
       <Header />
       <main className='flex flex-col items-center py-4 space-y-8'>
-        <Main data={state} />
+        <Main standData={state} />
       </main>
       <Footer copyright="2022" />
     </>
@@ -47,8 +47,7 @@ function Main(props) {
     <main className="flex flex-col items-center py-4 pt-6 space-y-8">
       <CookieStandForm onSubmit={props.formHandler} />
       <p className="text-gray-500 text-md">Report Table Coming Soon...</p>
-      <TableJSON
-        standData={props.standData} />
+      <TableJSON standData={props.standData} />
     </main>
   )
 }
@@ -93,12 +92,18 @@ function CookieStandForm(props) {
   )
 }
 
-function TableJSON({ standData }) {
+function TableJSON(props) {
   return (
     <div>
-      {JSON.stringify(standData) == '{"standData":[]}' ? "Enter A New Stand" : <p>{JSON.stringify(standData)}</p>}
+      {JSON.stringify(props.standData) == '{"standData":[]}' ? (
+        "Enter A New Stand"
+      ) : (
+        <p className="text-sm tracking-widest text-gray-500">
+          {JSON.stringify(props.standData)}
+        </p>
+      )}
     </div>
-  )
+  );
 }
 
 function Footer(props) {
