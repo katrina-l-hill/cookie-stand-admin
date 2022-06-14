@@ -36,7 +36,7 @@ export default function Home() {
   //   </>
   // )
 
-  const { user, login } = useAuth();
+  const { user, login, logout } = useAuth();
 
   return (
     < div className='bg-white' >
