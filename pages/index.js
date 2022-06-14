@@ -10,6 +10,7 @@ import CreateForm from '../components/CreateForm';
 
 import { useAuth } from '../contexts/auth';
 import useResource from '../hooks/useResource';
+import LoginForm from '../components/login-form'
 
 export default function Home() {
   // Home is a functional component
@@ -37,6 +38,8 @@ export default function Home() {
   // )
 
   const { user, login, logout } = useAuth();
+
+  if (!user) return <LoginForm onSubmit={login} />
 
   return (
     < div className='bg-white' >
